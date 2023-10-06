@@ -1,0 +1,1 @@
+SELECT ID from data WHERE "Total intl calls" >= 20
