@@ -1,0 +1,1 @@
+DELETE FROM Magazines where Edition IS NULL
