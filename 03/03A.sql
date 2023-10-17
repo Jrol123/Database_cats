@@ -5,12 +5,16 @@ CREATE TABLE IF NOT EXISTS contacts(
 
 CREATE TABLE IF NOT EXISTS email(
     address text,
-    contact_id integer,
-    FOREIGN KEY (contact_id) REFERENCES contacts(id)
+    contact_id integer REFERENCES contacts(id)
 );
 
 CREATE TABLE IF NOT EXISTS phones(
     number text,
-    contact_id,
-    FOREIGN KEY (contact_id) REFERENCES contacts(id)
+    contact_id integer REFERENCES contacts(id)
 );
+
+/* Почему не принимается с Foreign Key...?*/
+
+INSERT INTO contacts (id, name) VALUES (0, 'Artemii');
+
+SELECT * FROM contacts;
