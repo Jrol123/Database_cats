@@ -1,10 +1,14 @@
 SELECT Products.Title        AS Title,
        Categories.Name       AS CategoryName,
        Products.SellingPrice AS SellingPrice
+--        PurchaseItems.QuantityBought,
+--        SalesItems.QuantitySold
+--        SUM(PurchaseItems.QuantityBought),
+--        SUM(SalesItems.QuantitySold)
 FROM Products
-         -- Для включения товаров без категорий
          LEFT JOIN Categories on Products.CategoryID = Categories.ID
          JOIN SalesItems on Products.ID = SalesItems.ProductID
          JOIN PurchaseItems on Products.ID = PurchaseItems.ProductID
-WHERE PurchaseItems.QuantityBought == SalesItems.QuantitySold
+GROUP BY Products.Title, Products.SellingPrice
+HAVING SUM(DISTINCT QuantitySold) == SUM(DISTINCT QuantityBought)
 ORDER BY Products.SellingPrice DESC;
