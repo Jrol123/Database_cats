@@ -6,5 +6,6 @@ FROM SalesItems
          INNER JOIN Sellers on Sales.SellerID = Sellers.ID
          INNER JOIN Products on SalesItems.ProductID = Products.ID
 GROUP BY Sellers.ID
+-- Группирует и выделяет по Sellers.ID
 ORDER BY TotalRevenue DESC
 LIMIT 10;
