@@ -7,3 +7,4 @@ FROM Products
          JOIN SalesItems on Products.ID = SalesItems.ProductID
          JOIN PurchaseItems on Products.ID = PurchaseItems.ProductID
 WHERE PurchaseItems.QuantityBought == SalesItems.QuantitySold
+ORDER BY Products.SellingPrice DESC;
