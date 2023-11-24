@@ -4,10 +4,7 @@ SELECT Products.Title        AS Title,
 FROM Products
          -- Для включения товаров без категорий
          LEFT JOIN Categories on Products.CategoryID = Categories.ID
-WHERE Products.ID IN (SELECT ProductID
-                      FROM PurchaseItems
-                      GROUP BY ProductID)
-  AND Products.ID IN (SELECT ProductID
-                      FROM SalesItems
-                      GROUP BY ProductID)
-ORDER BY Products.SellingPrice DESC;
+         JOIN SalesItems on Products.ID = SalesItems.ProductID
+         JOIN PurchaseItems on Products.ID = PurchaseItems.ProductID
+WHERE PurchaseItems.QuantityBought == SalesItems.QuantitySold
+ORDER BY Products.SellingPrice;
