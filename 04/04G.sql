@@ -1,8 +1,7 @@
 SELECT date        AS date,
        count_true  AS number_of_new,
        count_false AS number_of_completed
-FROM incident_table
-         JOIN(SELECT MAX(ID)                               AS ID,
+FROM (SELECT MAX(ID)                               AS ID,
                      task_id,
                      substr(timestamp, 0, 10 + 1)          as date,
 --        COUNt(status_type) as total_count,
