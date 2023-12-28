@@ -1,0 +1,22 @@
+SELECT B.Name             AS 'BEAST.NAME',
+       COUNT(ContinentID) AS COUNT
+-- Переименование места в континент + группировка по зверям.
+FROM (SELECT BEAST, C.ROWI as ContinentID
+      FROM ENCOUNTERS
+               JOIN main.PLACES P on ENCOUNTERS.PLACE = P.ROWI
+               JOIN main.CONTINENTS C on P.CONT = C.ROWI
+      GROUP BY BEAST, ContinentID
+      ORDER BY BEAST) as beast_continent
+         JOIN main.BEASTS B on B.ROWI = beast_continent.BEAST
+GROUP BY B.Name
+HAVING COUNT > 1
+ORDER BY B.Name ASC;
+
+SELECT DISTINCT BEASTS.NAME                 AS `BEAST.NAME`,
+                COUNT(DISTINCT PLACES.CONT) AS COUNT
+FROM ENCOUNTERS
+         LEFT JOIN BEASTS ON BEASTS.ROWI = ENCOUNTERS.BEAST
+         JOIN PLACES ON PLACES.ROWI = ENCOUNTERS.PLACE
+GROUP BY BEASTS.NAME
+HAVING COUNT(DISTINCT PLACES.CONT) > 1
+ORDER BY BEASTS.NAME ASC;
