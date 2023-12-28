@@ -12,3 +12,12 @@
 *.db-wal
 
 # End of https://www.toptal.com/developers/gitignore/api/database
+05/.idea/vcs.xml
+05/.idea/modules.xml
+05/.idea/dictionaries/Artem.xml
+05/.idea/dataSources.xml
+05/.idea/05.iml
+04/.idea/modules.xml
+04/.idea/inspectionProfiles/Project_Default.xml
+04/.idea/dataSources.xml
+04/.idea/04.iml
