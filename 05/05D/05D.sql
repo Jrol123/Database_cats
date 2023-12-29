@@ -7,5 +7,6 @@ WITH RankedIncidents AS (SELECT Specialists.FullName                            
                                   JOIN Incidents ON Assignment.IncidentID = Incidents.ID)
 SELECT FullName, IncidentTitle
 FROM RankedIncidents
+-- Первые WholeResolved инцидентов уже завершены, их выбирать не надо
 WHERE IncidentRank > WholeResolved
   AND IncidentRank <= 5;
